@@ -1,5 +1,7 @@
 <?php
 
+/** @noinspection PhpUnused */
+
 declare(strict_types=1);
 
 namespace w3lifer\PhpHelper;
@@ -7,6 +9,7 @@ namespace w3lifer\PhpHelper;
 use DateTime;
 use DateTimeImmutable;
 use DateTimeZone;
+use Exception;
 use Generator;
 use JetBrains\PhpStorm\ArrayShape;
 use LogicException;
@@ -355,7 +358,7 @@ class PhpHelper
     /**
      * Returns timezone offset from the current time zone
      * @return int Timezone offset in seconds
-     * @throws \Exception
+     * @throws Exception
      */
     public static function getTimezoneOffset(string $timeZone): int
     {
