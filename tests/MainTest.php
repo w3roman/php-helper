@@ -127,7 +127,7 @@ final class MainTest extends TestCase
     }
 
     /**
-     * @runInSeparateProcess
+     * @runInSeparateProcess To prevent the following error: Cannot modify header information - headers already sent...
      */
     public function testAuth()
     {
@@ -145,7 +145,7 @@ final class MainTest extends TestCase
     }
 
     /**
-     * @runInSeparateProcess
+     * @runInSeparateProcess To prevent the following error: Cannot modify header information - headers already sent...
      */
     public function testClearAllCookies()
     {
