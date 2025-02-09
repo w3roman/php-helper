@@ -551,10 +551,11 @@ d	f	g'
 
     public function testUnzip()
     {
-        $pathToArchive = __DIR__ . '/_data/tmp.zip';
-        $extractTo = __DIR__ . '/_output/tmp';
+        $pathToArchive = __DIR__ . '/_data/test.zip';
+        $extractTo = __DIR__ . '/_output/test';
         $this->assertFalse(PhpHelper::unzip($pathToArchive, ''));
         $this->assertTrue(PhpHelper::unzip($pathToArchive, $extractTo));
+        $this->assertTrue(file_exists($extractTo . '/test.txt'));
         $this->assertTrue(PhpHelper::removeDirectoryRecursively($extractTo));
     }
 }
