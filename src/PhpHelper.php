@@ -327,7 +327,7 @@ class PhpHelper
      * Also note that weights should be integers
      * @see https://stackoverflow.com/a/11872928/4223982
      */
-    public static function getRandomWeightedElement(array $weightedValues)
+    public static function getRandomWeightedElement(array $weightedValues): bool|int
     {
         $rand = mt_rand(1, (int) array_sum($weightedValues));
         foreach ($weightedValues as $key => $value) {
@@ -503,7 +503,7 @@ class PhpHelper
     {
         if (isset($_COOKIE[$name])) {
             unset($_COOKIE[$name]);
-            setcookie($name, null, -1, '/');
+            setcookie($name, '', -1, '/');
             return true;
         }
         return false;
@@ -656,7 +656,7 @@ class PhpHelper
      * @return bool|int TRUE on success, FALSE or error number on failure
      * @see https://stackoverflow.com/a/8889126/4223982
      */
-    public static function unzip(string $pathToArchive, string $extractTo)
+    public static function unzip(string $pathToArchive, string $extractTo): bool|int
     {
         $zipArchive = new ZipArchive();
         $result = $zipArchive->open($pathToArchive);
