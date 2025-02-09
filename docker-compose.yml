@@ -1,6 +1,6 @@
 services:
   php8.0-cli:
-    build: .docker/php/8.0/cli
+    build: ./.docker/php/8.0/cli
     volumes:
       - ./:/app
     working_dir: /app
