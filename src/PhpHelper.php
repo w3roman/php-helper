@@ -122,6 +122,43 @@ class PhpHelper
         return false;
     }
 
+    /**
+     * https://sitemaps.org/protocol.html
+     */
+    public static function createSitemap(array $items): string
+    {
+        $sitemap = '';
+        foreach ($items as $item) {
+            $sitemap .=
+                '<url>' .
+                    '<loc>' . $item['loc'] . '</loc>' .
+                    (!empty($item['lastmod']) ? '<lastmod>' . $item['lastmod'] . '</lastmod>' : '') .
+                    (!empty($item['changefreq']) ? '<changefreq>' . $item['changefreq'] . '</changefreq>' : '') .
+                    (!empty($item['priority']) ? '<priority>' . $item['priority'] . '</priority>' : '') .
+                '</url>'
+            ;
+        }
+        return '<urlset>' . $sitemap . '</urlset>';
+    }
+
+    /**
+     * https://sitemaps.org/protocol.html#index
+     */
+    public static function createSitemapIndex(array $items): string
+    {
+        $sitemapIndex = '';
+        foreach ($items as $item) {
+            $sitemapIndex .=
+                '<sitemap>' .
+                    '<loc>' . $item['loc'] . '</loc>' .
+                    (!empty($item['lastmod']) ? '<lastmod>' . $item['lastmod'] . '</lastmod>' : '') .
+                '</sitemap>'
+            ;
+        }
+        $sitemapIndex = '<sitemapindex>' . $sitemapIndex . '</sitemapindex>';
+        return $sitemapIndex;
+    }
+
     public static function createSqlValuesString(array $values, string $valueWrapper = '"'): string
     {
         $sqlValues = '(';

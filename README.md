@@ -28,6 +28,10 @@ auth(array $credentials): bool;
 
 clearAllCookies(): bool;
 
+public static function createSitemap(array $items): string
+
+public static function createSitemapIndex(array $items): string
+
 createSqlValuesString(array $values, string $valueWrapper = '"'): string;
 
 csvStringToArray(string $csvString, bool $removeFirstLine = false): array;

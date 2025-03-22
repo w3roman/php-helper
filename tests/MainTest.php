@@ -161,6 +161,40 @@ final class MainTest extends TestCase
         $this->assertTrue(PhpHelper::clearAllCookies());
     }
 
+    public function testCreateSitemap()
+    {
+        $this->assertEquals(
+            '<urlset><url>' .
+                '<loc>https://shiftcalendar.online</loc>' .
+                '<lastmod>1970-01-01</lastmod>' .
+                '<changefreq>always</changefreq>' .
+                '<priority>0.0</priority>' .
+            '</url></urlset>',
+            PhpHelper::createSitemap([[
+                'loc' => 'https://shiftcalendar.online',
+                'lastmod' => '1970-01-01',
+                'changefreq' => 'always',
+                'priority' => '0.0',
+            ]
+            ]));
+    }
+
+    public function testCreateSitemapIndex()
+    {
+        $this->assertEquals(
+            '<sitemapindex><sitemap>' .
+                '<loc>https://shiftcalendar.online/sitemap.xml</loc>' .
+                '<lastmod>1970-01-01</lastmod>' .
+            '</sitemap></sitemapindex>',
+            PhpHelper::createSitemapIndex([[
+                'loc' => 'https://shiftcalendar.online/sitemap.xml',
+                'lastmod' => '1970-01-01',
+                'changefreq' => 'always',
+                'priority' => '0.0',
+            ]
+        ]));
+    }
+
     public function testCreateSqlValuesString()
     {
         $this->assertEquals('("one", "two", "three")', PhpHelper::createSqlValuesString(['one', 'two', 'three',]));
