@@ -164,7 +164,7 @@ final class MainTest extends TestCase
     public function testCreateSitemap()
     {
         $this->assertEquals(
-            '<urlset><url>' .
+            '<urlset xmlns="https://sitemaps.org/schemas/sitemap/0.9/"><url>' .
                 '<loc>https://shiftcalendar.online</loc>' .
                 '<lastmod>1970-01-01</lastmod>' .
                 '<changefreq>always</changefreq>' .
@@ -200,7 +200,7 @@ final class MainTest extends TestCase
     public function testCreateSitemapIndex()
     {
         $this->assertEquals(
-            '<sitemapindex><sitemap>' .
+            '<sitemapindex xmlns="https://sitemaps.org/schemas/sitemap/0.9/"><sitemap>' .
                 '<loc>https://shiftcalendar.online/sitemap.xml</loc>' .
                 '<lastmod>1970-01-01</lastmod>' .
             '</sitemap></sitemapindex>',
