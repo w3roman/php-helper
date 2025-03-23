@@ -125,7 +125,7 @@ class PhpHelper
     /**
      * https://sitemaps.org/protocol.html
      */
-    public static function createSitemap(array $items): string
+    public static function createSitemap(array $items, bool $addUrlsetTag = true): string
     {
         $sitemap = '';
         foreach ($items as $item) {
@@ -138,13 +138,16 @@ class PhpHelper
                 '</url>'
             ;
         }
+        if (!$addUrlsetTag) {
+            return $sitemap;
+        }
         return '<urlset>' . $sitemap . '</urlset>';
     }
 
     /**
      * https://sitemaps.org/protocol.html#index
      */
-    public static function createSitemapIndex(array $items): string
+    public static function createSitemapIndex(array $items, bool $addSitemapindexTag = true): string
     {
         $sitemapIndex = '';
         foreach ($items as $item) {
@@ -155,8 +158,10 @@ class PhpHelper
                 '</sitemap>'
             ;
         }
-        $sitemapIndex = '<sitemapindex>' . $sitemapIndex . '</sitemapindex>';
-        return $sitemapIndex;
+        if (!$addSitemapindexTag) {
+            return $sitemapIndex;
+        }
+        return '<sitemapindex>' . $sitemapIndex . '</sitemapindex>';
     }
 
     public static function createSqlValuesString(array $values, string $valueWrapper = '"'): string

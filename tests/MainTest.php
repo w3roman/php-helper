@@ -170,13 +170,31 @@ final class MainTest extends TestCase
                 '<changefreq>always</changefreq>' .
                 '<priority>0.0</priority>' .
             '</url></urlset>',
-            PhpHelper::createSitemap([[
-                'loc' => 'https://shiftcalendar.online',
-                'lastmod' => '1970-01-01',
-                'changefreq' => 'always',
-                'priority' => '0.0',
-            ]
-            ]));
+            PhpHelper::createSitemap([
+                [
+                    'loc' => 'https://shiftcalendar.online',
+                    'lastmod' => '1970-01-01',
+                    'changefreq' => 'always',
+                    'priority' => '0.0',
+                ],
+            ])
+        );
+        $this->assertEquals(
+            '<url>' .
+                '<loc>https://shiftcalendar.online</loc>' .
+                '<lastmod>1970-01-01</lastmod>' .
+                '<changefreq>always</changefreq>' .
+                '<priority>0.0</priority>' .
+            '</url>',
+            PhpHelper::createSitemap([
+                [
+                    'loc' => 'https://shiftcalendar.online',
+                    'lastmod' => '1970-01-01',
+                    'changefreq' => 'always',
+                    'priority' => '0.0',
+                ],
+            ], false)
+        );
     }
 
     public function testCreateSitemapIndex()
@@ -186,13 +204,29 @@ final class MainTest extends TestCase
                 '<loc>https://shiftcalendar.online/sitemap.xml</loc>' .
                 '<lastmod>1970-01-01</lastmod>' .
             '</sitemap></sitemapindex>',
-            PhpHelper::createSitemapIndex([[
-                'loc' => 'https://shiftcalendar.online/sitemap.xml',
-                'lastmod' => '1970-01-01',
-                'changefreq' => 'always',
-                'priority' => '0.0',
-            ]
-        ]));
+            PhpHelper::createSitemapIndex([
+                [
+                    'loc' => 'https://shiftcalendar.online/sitemap.xml',
+                    'lastmod' => '1970-01-01',
+                    'changefreq' => 'always',
+                    'priority' => '0.0',
+                ],
+            ])
+        );
+        $this->assertEquals(
+            '<sitemap>' .
+                '<loc>https://shiftcalendar.online/sitemap.xml</loc>' .
+                '<lastmod>1970-01-01</lastmod>' .
+            '</sitemap>',
+            PhpHelper::createSitemapIndex([
+                [
+                    'loc' => 'https://shiftcalendar.online/sitemap.xml',
+                    'lastmod' => '1970-01-01',
+                    'changefreq' => 'always',
+                    'priority' => '0.0',
+                ],
+            ], false)
+        );
     }
 
     public function testCreateSqlValuesString()
