@@ -141,7 +141,7 @@ class PhpHelper
         if (!$addUrlsetTag) {
             return $sitemap;
         }
-        return '<urlset xmlns="https://sitemaps.org/schemas/sitemap/0.9/">' . $sitemap . '</urlset>';
+        return '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' . $sitemap . '</urlset>';
     }
 
     /**
@@ -161,7 +161,7 @@ class PhpHelper
         if (!$addSitemapindexTag) {
             return $sitemapIndex;
         }
-        return '<sitemapindex xmlns="https://sitemaps.org/schemas/sitemap/0.9/">' . $sitemapIndex . '</sitemapindex>';
+        return '<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' . $sitemapIndex . '</sitemapindex>';
     }
 
     public static function createSqlValuesString(array $values, string $valueWrapper = '"'): string
