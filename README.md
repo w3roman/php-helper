@@ -64,6 +64,8 @@ isAjax(): bool;
 
 mbUcfirst(string $string): string;
 
+parseCookies(string $cookiesString): array
+
 prettyVarExportSoft(array $array): string;
 
 prettyVarExportHard(array $array): string;

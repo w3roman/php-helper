@@ -408,6 +408,11 @@ STRING, PhpHelper::getBase64Image(__DIR__ . '/_data/test.jpg')
         $this->assertEquals('Привет', PhpHelper::mbUcfirst('Привет'));
     }
 
+    public function testParseCookies()
+    {
+        $this->assertEquals(['a' => 1, 'b' => 2, 'c' => 3], PhpHelper::parseCookies('c=3;b=2;a=1'));
+    }
+
     public function testPrettyVarExportSoft()
     {
         $this->assertEquals(<<<'NOWDOC'

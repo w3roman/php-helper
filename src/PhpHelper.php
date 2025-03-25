@@ -433,6 +433,20 @@ class PhpHelper
     }
 
     /**
+     * Returns an array of cookies sorted alphabetically by name: ['name' => 'value', ...]
+     */
+    public static function parseCookies(string $cookiesString): array
+    {
+        $cookies = [];
+        $cookiesStringExploded = explode(';', $cookiesString);
+        foreach ($cookiesStringExploded as $cookieString) {
+            $cookieStringExploded = explode('=', $cookieString);
+            $cookies[$cookieStringExploded[0]] = $cookieStringExploded[1];
+        }
+        return $cookies;
+    }
+
+    /**
      * Returns a parsable string representation of a received array
      * Example of the incoming array:
      * ```
