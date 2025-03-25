@@ -28,9 +28,9 @@ auth(array $credentials): bool;
 
 clearAllCookies(): bool;
 
-function createSitemap(array $items, bool $addUrlsetTag = true): string
+createSitemap(array $items, bool $addUrlsetTag = true): string
 
-function createSitemapIndex(array $items, bool $addSitemapindexTag = true): string
+createSitemapIndex(array $items, bool $addSitemapindexTag = true): string
 
 createSqlValuesString(array $values, string $valueWrapper = '"'): string;
 
