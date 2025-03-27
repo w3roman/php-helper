@@ -582,8 +582,9 @@ class PhpHelper
         $allFiles = array_filter(scandir($pathToDirectory), fn ($item) => !in_array($item, ['.', '..']));
         foreach ($allFiles as $filename) {
             $path = $pathToDirectory . $filename;
+            // https://stackoverflow.com/questions/11267086/11267139#comment101937776_11267139
             if (is_link($path) || is_file($path)) {
-                if ($path === __FILE__) {
+                if ($path === __FILE__) { // https://stackoverflow.com/a/29007136/4223982
                     throw new Exception('You are trying to remove me itself');
                 }
                 unlink($path);
