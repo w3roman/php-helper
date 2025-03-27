@@ -568,19 +568,22 @@ class PhpHelper
 
     /**
      * Removes directory recursively
-     * @see https://stackoverflow.com/a/11267139/4223982
+     * The `glob()` function is not used because `GLOB_BRACE` is not supported everywhere
+     * @see https://stackoverflow.com/a/58287388/4223982
      */
     public static function removeDirectoryRecursively(string $pathToDirectory): bool
     {
         if (!file_exists($pathToDirectory)) {
             return false;
         }
-        // https://stackoverflow.com/a/57460352/4223982
-        foreach (glob($pathToDirectory . '/{,.}*[!.]*', GLOB_BRACE) as $pathToFile) {
-            if (is_dir($pathToFile)) {
-                self::removeDirectoryRecursively($pathToFile);
+        $pathToDirectory = rtrim($pathToDirectory, '/');
+        $pathToDirectory .= '/';
+        $allFiles = array_filter(scandir($pathToDirectory), fn ($item) => !in_array($item, ['.', '..']));
+        foreach ($allFiles as $filename) {
+            if (is_dir($pathToDirectory . $filename)) {
+                self::removeDirectoryRecursively($pathToDirectory . $filename);
             } else {
-                unlink($pathToFile);
+                unlink($pathToDirectory . $filename);
             }
         }
         return rmdir($pathToDirectory);

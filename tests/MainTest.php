@@ -479,30 +479,32 @@ NOWDOC
         $pathToTmpDir = __DIR__ . '/tmp';
         mkdir($pathToTmpDir);
 
-        file_put_contents($pathToTmpDir . '/tmp.txt', 'Lorem ipsum ...');
-        file_put_contents($pathToTmpDir . '/.tmp.txt', 'Lorem ipsum ...');
-        file_put_contents($pathToTmpDir . '/..tmp.txt', 'Lorem ipsum ...');
-        file_put_contents($pathToTmpDir . '/...tmp.txt', 'Lorem ipsum ...');
+        $paths = [
+            '...',
 
-        file_put_contents($pathToTmpDir . '/tmp.txt.', 'Lorem ipsum ...');
-        file_put_contents($pathToTmpDir . '/tmp.txt..', 'Lorem ipsum ...');
-        file_put_contents($pathToTmpDir . '/tmp.txt...', 'Lorem ipsum ...');
+            '.tmp.txt',
+            '..tmp.txt',
+            '...tmp.txt',
 
-        file_put_contents($pathToTmpDir . '/.tmp.txt.', 'Lorem ipsum ...');
-        file_put_contents($pathToTmpDir . '/.tmp.txt..', 'Lorem ipsum ...');
-        file_put_contents($pathToTmpDir . '/.tmp.txt...', 'Lorem ipsum ...');
+            'tmp.txt',
+            'tmp..txt',
+            'tmp...txt',
 
-        file_put_contents($pathToTmpDir . '/..tmp.txt.', 'Lorem ipsum ...');
-        file_put_contents($pathToTmpDir . '/..tmp.txt..', 'Lorem ipsum ...');
-        file_put_contents($pathToTmpDir . '/..tmp.txt...', 'Lorem ipsum ...');
+            'tmp.txt.',
+            'tmp.txt..',
+            'tmp.txt...',
+        ];
 
-        file_put_contents($pathToTmpDir . '/...tmp.txt', 'Lorem ipsum ...');
-        file_put_contents($pathToTmpDir . '/...tmp.txt.', 'Lorem ipsum ...');
-        file_put_contents($pathToTmpDir . '/...tmp.txt..', 'Lorem ipsum ...');
-        file_put_contents($pathToTmpDir . '/...tmp.txt...', 'Lorem ipsum ...');
+        foreach ($paths as $path) {
+            file_put_contents($pathToTmpDir . '/' . $path, '');
+        }
 
-        mkdir($pathToTmpDir . '/tmp');
-        file_put_contents($pathToTmpDir . '/tmp/tmp.txt', 'Lorem ipsum ...');
+        $nestedDir = $pathToTmpDir . '/nested-dir';
+        mkdir($nestedDir);
+
+        foreach ($paths as $path) {
+            file_put_contents($nestedDir . '/' . $path, '');
+        }
 
         $this->assertTrue(PhpHelper::removeDirectoryRecursively($pathToTmpDir));
     }
