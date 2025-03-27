@@ -506,6 +506,10 @@ NOWDOC
             file_put_contents($pathToTmpDir . '/' . $path, '');
         }
 
+        $pathToTmpDirToWhichLinkIsGiven = __DIR__ . '/tmp-dir-to-which-link-is-given';
+        mkdir($pathToTmpDirToWhichLinkIsGiven);
+        symlink($pathToTmpDirToWhichLinkIsGiven, $pathToTmpDir . '/link');
+
         $nestedDir = $pathToTmpDir . '/nested-dir';
         mkdir($nestedDir);
 

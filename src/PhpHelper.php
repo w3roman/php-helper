@@ -581,10 +581,14 @@ class PhpHelper
         $pathToDirectory .= '/';
         $allFiles = array_filter(scandir($pathToDirectory), fn ($item) => !in_array($item, ['.', '..']));
         foreach ($allFiles as $filename) {
-            if (is_dir($pathToDirectory . $filename)) {
-                self::removeDirectoryRecursively($pathToDirectory . $filename);
-            } else {
-                unlink($pathToDirectory . $filename);
+            $path = $pathToDirectory . $filename;
+            if (is_link($path) || is_file($path)) {
+                if ($path === __FILE__) {
+                    throw new Exception('You are trying to remove me itself');
+                }
+                unlink($path);
+            } elseif (is_dir($path)) {
+                self::removeDirectoryRecursively($path);
             }
         }
         return rmdir($pathToDirectory);
