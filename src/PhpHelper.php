@@ -443,6 +443,7 @@ class PhpHelper
             $cookieStringExploded = explode('=', $cookieString);
             $cookies[$cookieStringExploded[0]] = $cookieStringExploded[1];
         }
+        ksort($cookies);
         return $cookies;
     }
 

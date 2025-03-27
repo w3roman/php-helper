@@ -410,7 +410,14 @@ STRING, PhpHelper::getBase64Image(__DIR__ . '/_data/test.jpg')
 
     public function testParseCookies()
     {
-        $this->assertEquals(['a' => 1, 'b' => 2, 'c' => 3], PhpHelper::parseCookies('c=3;b=2;a=1'));
+        $parsedCookies = PhpHelper::parseCookies('c=3;b=2;a=1');
+        $i = 0;
+        $cookies = [['a', '1'], ['b', '2'], ['c', '3']];
+        foreach ($parsedCookies as $key => $value) {
+            $this->assertEquals($cookies[$i][0], $key);
+            $this->assertEquals($cookies[$i][1], $value);
+            $i++;
+        }
     }
 
     public function testPrettyVarExportSoft()
