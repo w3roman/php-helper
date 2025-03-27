@@ -518,6 +518,8 @@ NOWDOC
         }
 
         $this->assertTrue(PhpHelper::removeDirectoryRecursively($pathToTmpDir));
+        $this->assertTrue(file_exists($pathToTmpDirToWhichLinkIsGiven));
+        $this->assertTrue(PhpHelper::removeDirectoryRecursively($pathToTmpDirToWhichLinkIsGiven));
     }
 
     public function testRemoveDuplicatesFromMultiDimensionalArray()
