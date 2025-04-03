@@ -1,0 +1,30 @@
+{
+  "name": "w3lifer/php-helper",
+  "description": "PHP Helper",
+  "keywords": [
+    "php",
+    "helper"
+  ],
+  "require": {
+    "php": "^8.0",
+    "ext-SimpleXML": "*",
+    "ext-fileinfo": "*",
+    "ext-mbstring": "*",
+    "ext-zip": "*"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^9.6"
+  },
+  "autoload": {
+    "psr-4": {
+      "w3lifer\\PhpHelper\\": "src/"
+    }
+  },
+  "authors": [
+    {
+      "name": "Roman Grinyov",
+      "email": "roman.m.grinyov@gmail.com"
+    }
+  ],
+  "license": "MIT"
+}

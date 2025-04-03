@@ -1,0 +1,9 @@
+services:
+  php8.0-cli:
+    build: ./.docker/php/8.0/cli
+    image: php-helper
+    container_name: php-helper
+    volumes:
+      - ./:/app
+    working_dir: /app
+    user: 1000:1000
