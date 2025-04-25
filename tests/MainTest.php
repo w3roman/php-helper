@@ -164,6 +164,7 @@ final class MainTest extends TestCase
     public function testCreateSitemap()
     {
         $this->assertEquals(
+            PhpHelper::XML_DECLARATION . PHP_EOL .
             '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url>' .
                 '<loc>https://shiftcalendar.online</loc>' .
                 '<lastmod>1970-01-01</lastmod>' .
@@ -200,6 +201,7 @@ final class MainTest extends TestCase
     public function testCreateSitemapIndex()
     {
         $this->assertEquals(
+            PhpHelper::XML_DECLARATION . PHP_EOL .
             '<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><sitemap>' .
                 '<loc>https://shiftcalendar.online/sitemap.xml</loc>' .
                 '<lastmod>1970-01-01</lastmod>' .

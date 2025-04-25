@@ -16,6 +16,8 @@ use ZipArchive;
 
 class PhpHelper
 {
+    public const XML_DECLARATION = '<?xml version="1.0" encoding="UTF-8"?>';
+
     /**
      * Returns received array where keys are prefixed with specified prefix
      * @see https://stackoverflow.com/a/2608166/4223982
@@ -141,7 +143,8 @@ class PhpHelper
         if (!$addUrlsetTag) {
             return $sitemap;
         }
-        return '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' . $sitemap . '</urlset>';
+        return self::XML_DECLARATION . PHP_EOL .
+            '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' . $sitemap . '</urlset>';
     }
 
     /**
@@ -161,7 +164,8 @@ class PhpHelper
         if (!$addSitemapindexTag) {
             return $sitemapIndex;
         }
-        return '<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' . $sitemapIndex . '</sitemapindex>';
+        return self::XML_DECLARATION . PHP_EOL .
+            '<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' . $sitemapIndex . '</sitemapindex>';
     }
 
     public static function createSqlValuesString(array $values, string $valueWrapper = '"'): string
