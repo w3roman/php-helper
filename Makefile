@@ -3,8 +3,8 @@
 default:
 	@echo 'Enter command'
 
-bash:
-	docker compose run --rm php8.0-cli bash
+sh:
+	docker compose run --rm php8.0-cli sh
 
 build:
 	docker compose build
