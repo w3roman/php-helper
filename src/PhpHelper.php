@@ -68,7 +68,7 @@ class PhpHelper
     /**
      * @see https://stackoverflow.com/a/5965940/4223982
      */
-    public static function arrayToXml(array $data, SimpleXMLElement &$xmlData = null): string
+    public static function arrayToXml(array $data, ?SimpleXMLElement &$xmlData = null): string
     {
         if ($xmlData === null) {
             $xmlData = new SimpleXMLElement('<?xml version="1.0"?><data value=""></data>');
@@ -228,7 +228,8 @@ class PhpHelper
         $result = [];
         foreach ($explodedCsvString as $csvLine) {
             $csvLine = trim($csvLine);
-            $result[] = str_getcsv($csvLine);
+            // Regarding the "escape" argument, see the warning here: https://php.net/str-getcsv
+            $result[] = str_getcsv($csvLine, escape: '');
         }
         return $result;
     }
@@ -512,7 +513,8 @@ class PhpHelper
     {
         $filePointer = fopen($filename, 'w');
         foreach ($array as $row) {
-            fputcsv($filePointer, $row);
+            // Regarding the "escape" argument, see the warning here: https://php.net/fputcsv
+            fputcsv($filePointer, $row, escape: '');
         }
         return fclose($filePointer);
     }
