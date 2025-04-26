@@ -3,6 +3,7 @@
 - [Installation](#installation)
 - [Usage](#usage)
   - [Methods](#methods)
+  - [Constants](#constants)
 - [Tests](#tests)
 
 ## Installation
@@ -93,8 +94,14 @@ tabDelimitedStringToArray(string $string): array;
 unzip(string $pathToArchive, string $extractTo);
 ```
 
+### Constants
+
+- `XML_DECLARATION`
+- `OPEN_URLSET_TAG`
+- `OPEN_SITEMAPINDEX_TAG`
+
 ## Tests
 
 ``` sh
-make tests
+make tests # make t
 ```
