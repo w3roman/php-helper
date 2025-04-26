@@ -17,6 +17,8 @@ use ZipArchive;
 class PhpHelper
 {
     public const XML_DECLARATION = '<?xml version="1.0" encoding="UTF-8"?>';
+    public const OPEN_URLSET_TAG = '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">';
+    public const OPEN_SITEMAPINDEX_TAG = '<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">';
 
     /**
      * Returns received array where keys are prefixed with specified prefix
@@ -143,8 +145,7 @@ class PhpHelper
         if (!$addUrlsetTag) {
             return $sitemap;
         }
-        return self::XML_DECLARATION . PHP_EOL .
-            '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' . $sitemap . '</urlset>';
+        return self::XML_DECLARATION . PHP_EOL . self::OPEN_URLSET_TAG . $sitemap . '</urlset>';
     }
 
     /**
@@ -164,8 +165,7 @@ class PhpHelper
         if (!$addSitemapindexTag) {
             return $sitemapIndex;
         }
-        return self::XML_DECLARATION . PHP_EOL .
-            '<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' . $sitemapIndex . '</sitemapindex>';
+        return self::XML_DECLARATION . PHP_EOL . self::OPEN_SITEMAPINDEX_TAG . $sitemapIndex . '</sitemapindex>';
     }
 
     public static function createSqlValuesString(array $values, string $valueWrapper = '"'): string
