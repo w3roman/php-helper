@@ -17,19 +17,19 @@ composer req w3lifer/php-helper
 ### Methods
 
 ``` php
-addChildrenToSimpleXMLElement(SimpleXMLElement $simpleXMLElement, array $children): void;
+addChildrenToSimpleXMLElement(SimpleXMLElement $simpleXMLElement, array $children): void
 
-addPrefixToArrayKeys(array $array, string $prefix, bool $recursively = true): array;
+addPrefixToArrayKeys(array $array, string $prefix, bool $recursively = true): array
 
-addPostfixToArrayKeys(array $array, string $postfix, bool $recursively = true): array;
+addPostfixToArrayKeys(array $array, string $postfix, bool $recursively = true): array
 
-addZeroPrefix(string $value, int $order = 1): string;
+addZeroPrefix(string $value, int $order = 1): string
 
-arrayToXml(array $data, SimpleXMLElement &$xmlData = null): string;
+arrayToXml(array $data, SimpleXMLElement &$xmlData = null): string
 
-auth(array $credentials): bool;
+auth(array $credentials): bool
 
-clearAllCookies(): bool;
+clearAllCookies(): bool
 
 public static function createRss(array $channelInfo, array $items): string
 
@@ -37,65 +37,65 @@ createSitemap(array $items, bool $addUrlsetTag = true): string
 
 createSitemapIndex(array $items, bool $addSitemapindexTag = true): string
 
-createSqlValuesString(array $values, string $valueWrapper = '"'): string;
+createSqlValuesString(array $values, string $valueWrapper = '"'): string
 
-csvStringToArray(string $csvString, bool $removeFirstLine = false): array;
+csvStringToArray(string $csvString, bool $removeFirstLine = false): array
 
-filterListOfArraysByKeyValuePairs(array $inputArray, array $searchParams): array;
+filterListOfArraysByKeyValuePairs(array $inputArray, array $searchParams): array
 
-getBase64Image(string $absolutePathToImage): string;
+getBase64Image(string $absolutePathToImage): string
 
-getClassNameFromObject(object $object): string;
+getClassNameFromObject(object $object): string
 
-getClassNameFromString(string $className): string;
+getClassNameFromString(string $className): string
 
-getDatesBetweenDates(string $startDate, string $endDate, string $format = 'Y-m-d'): array;
+getDatesBetweenDates(string $startDate, string $endDate, string $format = 'Y-m-d'): array
 
-getFilesInDirectory(string $pathToDirectory, bool $recursively = false, array $fileExtensions = [], &$result = []): array;
+getFilesInDirectory(string $pathToDirectory, bool $recursively = false, array $fileExtensions = [], &$result = []): array
 
-getFullUrl(): string;
+getFullUrl(): string
 
-getNormalizedDayOfWeek(int $dayOfWeek): int;
+getNormalizedDayOfWeek(int $dayOfWeek): int
 
-getRandomWeightedElement(array $weightedValues);
+getRandomWeightedElement(array $weightedValues)
 
-getResponseHeader(string $header, array $response): string;
+getResponseHeader(string $header, array $response): string
 
-getTimezoneOffset(string $timeZone): int;
+getTimezoneOffset(string $timeZone): int
 
-insertAfterKey(array $array, string $afterKey, string $key, string $new);
+insertAfterKey(array $array, string $afterKey, string $key, string $new)
 
-isAjax(): bool;
+isAjax(): bool
 
-mbUcfirst(string $string): string;
+mbUcfirst(string $string): string
 
 parseCookies(string $cookiesString): array
 
-prettyVarExportSoft(array $array): string;
+prettyVarExportSoft(array $array): string
 
-prettyVarExportHard(array $array): string;
+prettyVarExportHard(array $array): string
 
-putArrayToCsvFile(string $filename, array $array): bool;
+putArrayToCsvFile(string $filename, array $array): bool
 
-quickSort(array $array): array;
+quickSort(array $array): array
 
-rangeGenerator(int $start, int $limit, int $step = 1): Generator;
+rangeGenerator(int $start, int $limit, int $step = 1): Generator
 
-removeCookie(string $name): bool;
+removeCookie(string $name): bool
 
-removeDirectoryRecursively(string $pathToDirectory): bool;
+removeDirectoryRecursively(string $pathToDirectory): bool
 
-removeDuplicatesFromMultiDimensionalArray(array $array): array;
+removeDuplicatesFromMultiDimensionalArray(array $array): array
 
-secondsToTime(int $seconds): array;
+secondsToTime(int $seconds): array
 
-sortByDate(array $array, string $key, bool $asc = true): array;
+sortByDate(array $array, string $key, bool $asc = true): array
 
-strRepeatWithSeparator(string $input, int $multiplier, string $separator = ''): string;
+strRepeatWithSeparator(string $input, int $multiplier, string $separator = ''): string
 
-tabDelimitedStringToArray(string $string): array;
+tabDelimitedStringToArray(string $string): array
 
-unzip(string $pathToArchive, string $extractTo);
+unzip(string $pathToArchive, string $extractTo)
 ```
 
 ### Constants
