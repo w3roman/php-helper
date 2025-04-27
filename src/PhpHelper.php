@@ -20,6 +20,17 @@ class PhpHelper
     public const OPEN_URLSET_TAG = '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">';
     public const OPEN_SITEMAPINDEX_TAG = '<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">';
 
+    public static function addChildrenToSimpleXMLElement(SimpleXMLElement $simpleXMLElement, array $children): void
+    {
+        foreach ($children as $name => $value) {
+            if (is_array($value)) {
+                self::addChildrenToSimpleXMLElement($simpleXMLElement, $value);
+            } else {
+                $simpleXMLElement->addChild($name, $value);
+            }
+        }
+    }
+
     /**
      * Returns received array where keys are prefixed with specified prefix
      * @see https://stackoverflow.com/a/2608166/4223982
@@ -124,6 +135,47 @@ class PhpHelper
             return true;
         }
         return false;
+    }
+
+    /**
+     * Usage
+```
+PhpHelper::createRss([
+    'title' => 'StackHub',
+    'link' => 'https://stackhub.net',
+    'description' => '▷ Concise yet comprehensive technical manuals and online tools',
+], [
+    [
+        'title' => 'Manuals',
+        'link' => 'https://stackhub.net/manuals',
+        'description' => '▷ Concise yet comprehensive technical manuals',
+    ],
+    [
+        'title' => 'Tools',
+        'link' => 'https://stackhub.net/tools',
+        'description' => '▷ Online tools',
+    ],
+])
+```
+     * @see https://rssboard.org/rss-specification RSS Specification
+     * @param array $channelInfo
+     * @see https://rssboard.org/rss-specification#requiredChannelElements Required channel elements
+     * @see https://rssboard.org/rss-specification#optionalChannelElements Optional channel elements
+     * @param array $items
+     * @see https://rssboard.org/rss-specification#hrelementsOfLtitemgt Elements of &lt;item&gt;
+     * @return string
+     * @throws Exception
+     */
+    public static function createRss(array $channelInfo, array $items): string
+    {
+        $rss = new SimpleXMLElement(self::XML_DECLARATION . PHP_EOL . '<rss/>');
+        $channel = $rss->addChild('channel');
+        self::addChildrenToSimpleXMLElement($channel, $channelInfo);
+        foreach ($items as $item) {
+            $itemElement = $channel->addChild('item');
+            self::addChildrenToSimpleXMLElement($itemElement, $item);
+        }
+        return $rss->asXML();
     }
 
     /**

@@ -161,6 +161,62 @@ final class MainTest extends TestCase
         $this->assertTrue(PhpHelper::clearAllCookies());
     }
 
+    public function testCreateRss()
+    {
+$this->assertEquals(
+
+'<?xml version="1.0" encoding="UTF-8"?>' . "\n" .
+'<rss><channel>' .
+    '<title>StackHub</title>' .
+    '<link>https://stackhub.net</link>' .
+    '<description>▷ Concise yet comprehensive technical manuals and online tools — useful and fluff-free</description>' .
+'</channel></rss>' . "\n",
+
+PhpHelper::createRss([
+    'title' => 'StackHub',
+    'link' => 'https://stackhub.net',
+    'description' => '▷ Concise yet comprehensive technical manuals and online tools — useful and fluff-free',
+], [])
+
+);
+
+        // -------------------------------------------------------------------------------------------------------------
+
+$this->assertEquals(
+
+'<?xml version="1.0" encoding="UTF-8"?>' . "\n" .
+'<rss><channel>' .
+    '<title>StackHub</title>' .
+    '<link>https://stackhub.net</link>' .
+    '<description>▷ Concise yet comprehensive technical manuals and online tools — useful and fluff-free</description>' .
+
+    '<item><title>Manuals</title><link>https://stackhub.net/manuals</link>' .
+    '<description>▷ Concise yet comprehensive technical manuals — useful and fluff-free</description></item>' .
+
+    '<item><title>Tools</title><link>https://stackhub.net/tools</link>' .
+    '<description>▷ Online tools — useful and fluff-free</description></item>' .
+'</channel></rss>' . "\n",
+
+PhpHelper::createRss([
+    'title' => 'StackHub',
+    'link' => 'https://stackhub.net',
+    'description' => '▷ Concise yet comprehensive technical manuals and online tools — useful and fluff-free',
+], [
+    [
+        'title' => 'Manuals',
+        'link' => 'https://stackhub.net/manuals',
+        'description' => '▷ Concise yet comprehensive technical manuals — useful and fluff-free',
+    ],
+    [
+        'title' => 'Tools',
+        'link' => 'https://stackhub.net/tools',
+        'description' => '▷ Online tools — useful and fluff-free',
+    ],
+])
+
+);
+    }
+
     public function testCreateSitemap()
     {
         $this->assertEquals(

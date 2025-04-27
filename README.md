@@ -17,6 +17,8 @@ composer req w3lifer/php-helper
 ### Methods
 
 ``` php
+addChildrenToSimpleXMLElement(SimpleXMLElement $simpleXMLElement, array $children): void;
+
 addPrefixToArrayKeys(array $array, string $prefix, bool $recursively = true): array;
 
 addPostfixToArrayKeys(array $array, string $postfix, bool $recursively = true): array;
@@ -28,6 +30,8 @@ arrayToXml(array $data, SimpleXMLElement &$xmlData = null): string;
 auth(array $credentials): bool;
 
 clearAllCookies(): bool;
+
+public static function createRss(array $channelInfo, array $items): string
 
 createSitemap(array $items, bool $addUrlsetTag = true): string
 
