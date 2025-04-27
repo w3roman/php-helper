@@ -168,7 +168,7 @@ PhpHelper::createRss([
      */
     public static function createRss(array $channelInfo, array $items): string
     {
-        $rss = new SimpleXMLElement(self::XML_DECLARATION . PHP_EOL . '<rss/>');
+        $rss = new SimpleXMLElement(self::XML_DECLARATION . PHP_EOL . '<rss version="2.0"/>');
         $channel = $rss->addChild('channel');
         self::addChildrenToSimpleXMLElement($channel, $channelInfo);
         foreach ($items as $item) {

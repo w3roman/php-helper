@@ -166,7 +166,7 @@ final class MainTest extends TestCase
 $this->assertEquals(
 
 '<?xml version="1.0" encoding="UTF-8"?>' . "\n" .
-'<rss><channel>' .
+'<rss version="2.0"><channel>' .
     '<title>StackHub</title>' .
     '<link>https://stackhub.net</link>' .
     '<description>▷ Concise yet comprehensive technical manuals and online tools — useful and fluff-free</description>' .
@@ -185,7 +185,7 @@ PhpHelper::createRss([
 $this->assertEquals(
 
 '<?xml version="1.0" encoding="UTF-8"?>' . "\n" .
-'<rss><channel>' .
+'<rss version="2.0"><channel>' .
     '<title>StackHub</title>' .
     '<link>https://stackhub.net</link>' .
     '<description>▷ Concise yet comprehensive technical manuals and online tools — useful and fluff-free</description>' .
