@@ -408,6 +408,7 @@ PhpHelper::createRss([
         return $result;
     }
 
+    /** @noinspection PhpUnused */
     public static function getFullUrl(): string
     {
         return
@@ -436,6 +437,7 @@ PhpHelper::createRss([
      * being selected
      * Also note that weights should be integers
      * @see https://stackoverflow.com/a/11872928/4223982
+     * @noinspection PhpUnused
      */
     public static function getRandomWeightedElement(array $weightedValues): bool|int
     {
@@ -602,6 +604,7 @@ PhpHelper::createRss([
 
     /**
      * @see https://php.net/language.generators.overview#example-317
+     * @noinspection PhpUnused
      */
     public static function rangeGenerator(int $start, int $limit, int $step = 1): Generator
     {
@@ -624,6 +627,7 @@ PhpHelper::createRss([
 
     /**
      * @see https://stackoverflow.com/a/19972329/4223982
+     * @noinspection PhpUnused
      */
     public static function removeCookie(string $name): bool
     {
