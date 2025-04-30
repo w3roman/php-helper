@@ -144,16 +144,19 @@ PhpHelper::createRss([
     'title' => 'StackHub',
     'link' => 'https://stackhub.net',
     'description' => '▷ Concise yet comprehensive technical manuals and online tools',
+    'atomLink' => 'https://stackhub.net/rss.xml',
 ], [
     [
         'title' => 'Manuals',
         'link' => 'https://stackhub.net/manuals',
         'description' => '▷ Concise yet comprehensive technical manuals',
+        'guid' => 'https://stackhub.net/manuals',
     ],
     [
         'title' => 'Tools',
         'link' => 'https://stackhub.net/tools',
         'description' => '▷ Online tools',
+        'guid' => 'https://stackhub.net/tools',
     ],
 ])
 ```
@@ -170,6 +173,13 @@ PhpHelper::createRss([
     {
         $rss = new SimpleXMLElement(self::XML_DECLARATION . PHP_EOL . '<rss version="2.0"/>');
         $channel = $rss->addChild('channel');
+        if (isset($channelInfo['atomLink'])) {
+            $rss->addAttribute('xmlns:xmlns:atom', 'http://www.w3.org/2005/Atom');
+            $channel->addChild(
+                'atom:atom:link href="' . $channelInfo['atomLink'] . '" rel="self" type="application/rss+xml"'
+            );
+            unset($channelInfo['atomLink']);
+        }
         self::addChildrenToSimpleXMLElement($channel, $channelInfo);
         foreach ($items as $item) {
             $itemElement = $channel->addChild('item');

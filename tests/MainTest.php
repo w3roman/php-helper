@@ -180,6 +180,25 @@ PhpHelper::createRss([
 
 );
 
+$this->assertEquals(
+
+'<?xml version="1.0" encoding="UTF-8"?>' . "\n" .
+'<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel>' .
+    '<atom:link href="https://stackhub.net/rss.xml" rel="self" type="application/rss+xml"/>' .
+    '<title>StackHub</title>' .
+    '<link>https://stackhub.net</link>' .
+    '<description>▷ Concise yet comprehensive technical manuals and online tools — useful and fluff-free</description>' .
+'</channel></rss>' . "\n",
+
+PhpHelper::createRss([
+    'title' => 'StackHub',
+    'link' => 'https://stackhub.net',
+    'description' => '▷ Concise yet comprehensive technical manuals and online tools — useful and fluff-free',
+    'atomLink' => 'https://stackhub.net/rss.xml',
+], [])
+
+);
+
         // -------------------------------------------------------------------------------------------------------------
 
 $this->assertEquals(
@@ -191,10 +210,12 @@ $this->assertEquals(
     '<description>▷ Concise yet comprehensive technical manuals and online tools — useful and fluff-free</description>' .
 
     '<item><title>Manuals</title><link>https://stackhub.net/manuals</link>' .
-    '<description>▷ Concise yet comprehensive technical manuals — useful and fluff-free</description></item>' .
+    '<description>▷ Concise yet comprehensive technical manuals — useful and fluff-free</description>' .
+    '<guid>https://stackhub.net/manuals</guid></item>' .
 
     '<item><title>Tools</title><link>https://stackhub.net/tools</link>' .
-    '<description>▷ Online tools — useful and fluff-free</description></item>' .
+    '<description>▷ Online tools — useful and fluff-free</description>' .
+    '<guid>https://stackhub.net/tools</guid></item>' .
 '</channel></rss>' . "\n",
 
 PhpHelper::createRss([
@@ -206,11 +227,13 @@ PhpHelper::createRss([
         'title' => 'Manuals',
         'link' => 'https://stackhub.net/manuals',
         'description' => '▷ Concise yet comprehensive technical manuals — useful and fluff-free',
+        'guid' => 'https://stackhub.net/manuals',
     ],
     [
         'title' => 'Tools',
         'link' => 'https://stackhub.net/tools',
         'description' => '▷ Online tools — useful and fluff-free',
+        'guid' => 'https://stackhub.net/tools',
     ],
 ])
 
