@@ -31,7 +31,7 @@ auth(array $credentials): bool
 
 clearAllCookies(): bool
 
-public static function createRss(array $channelInfo, array $items): string
+createRss(array $channelInfo, array $items): string
 
 createSitemap(array $items, bool $addUrlsetTag = true): string
 
