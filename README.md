@@ -43,7 +43,7 @@ csvStringToArray(string $csvString, bool $removeFirstLine = false): array;
 
 filterListOfArraysByKeyValuePairs(array $inputArray, array $searchParams): array;
 
-generateBase58Id(int $length = 8): string
+generateBase58Id(int $length = 8): string;
 
 getBase64Image(string $absolutePathToImage): string;
 
