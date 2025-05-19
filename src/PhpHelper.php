@@ -329,9 +329,20 @@ PhpHelper::createRss([
         return $inputArray;
     }
 
+    /**
+     * 1234567890
+     * 123456789
+     *
+     * ABCDEFGHIJKLMNOPQRSTUVWXYZ
+     * ABCDEFGH JKLMN PQRSTUVWXYZ
+     *
+     * abcdefghijklmnopqrstuvwxyz
+     * abcdefghijk mnopqrstuvwxyz
+     *
+     * @noinspection SpellCheckingInspection
+     */
     public static function generateBase58Id(int $length = 8): string
     {
-        /** @noinspection SpellCheckingInspection */
         $alphabet = '123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz';
 
         $id = '';
