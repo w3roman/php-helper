@@ -329,6 +329,18 @@ PhpHelper::createRss([
         return $inputArray;
     }
 
+    public static function generateBase58Id(int $length = 8): string
+    {
+        $alphabet = '123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz';
+
+        $id = '';
+        for ($i = 0; $i < $length; $i++) {
+            $id .= $alphabet[random_int(0, 57)];
+        }
+
+        return $id;
+    }
+
     public static function getBase64Image(string $absolutePathToImage): string
     {
         $mimeType = mime_content_type($absolutePathToImage);
