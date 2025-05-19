@@ -102,9 +102,10 @@ unzip(string $pathToArchive, string $extractTo);
 
 ### Constants
 
-- `XML_DECLARATION`
-- `OPEN_URLSET_TAG`
+- `BASE58`
 - `OPEN_SITEMAPINDEX_TAG`
+- `OPEN_URLSET_TAG`
+- `XML_DECLARATION`
 
 ## Tests
 

@@ -16,9 +16,11 @@ use ZipArchive;
 
 class PhpHelper
 {
-    public const XML_DECLARATION = '<?xml version="1.0" encoding="UTF-8"?>';
-    public const OPEN_URLSET_TAG = '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">';
+    /** @noinspection SpellCheckingInspection */
+    public const BASE58 = '123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz';
     public const OPEN_SITEMAPINDEX_TAG = '<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">';
+    public const OPEN_URLSET_TAG = '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">';
+    public const XML_DECLARATION = '<?xml version="1.0" encoding="UTF-8"?>';
 
     public static function addChildrenToSimpleXMLElement(SimpleXMLElement $simpleXMLElement, array $children): void
     {
@@ -343,13 +345,10 @@ PhpHelper::createRss([
      */
     public static function generateBase58Id(int $length = 8): string
     {
-        $alphabet = '123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz';
-
         $id = '';
         for ($i = 0; $i < $length; $i++) {
-            $id .= $alphabet[random_int(0, 57)];
+            $id .= self::BASE58[random_int(0, 57)];
         }
-
         return $id;
     }
 
