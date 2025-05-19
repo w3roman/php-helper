@@ -331,6 +331,7 @@ PhpHelper::createRss([
 
     public static function generateBase58Id(int $length = 8): string
     {
+        /** @noinspection SpellCheckingInspection */
         $alphabet = '123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz';
 
         $id = '';
@@ -680,7 +681,7 @@ PhpHelper::createRss([
     }
 
     /**
-     * Removes duplicates from a multi-dimensional array
+     * Removes duplicates from a multidimensional array
      * Example of the incoming array:
      * ```
      * [
