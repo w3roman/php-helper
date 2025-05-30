@@ -16,7 +16,18 @@ use ZipArchive;
 
 class PhpHelper
 {
-    /** @noinspection SpellCheckingInspection */
+    /**
+     * ```
+     * 1234567890
+     * 123456789
+     *
+     * ABCDEFGHIJKLMNOPQRSTUVWXYZ
+     * ABCDEFGH JKLMN PQRSTUVWXYZ
+     *
+     * abcdefghijklmnopqrstuvwxyz
+     * abcdefghijk mnopqrstuvwxyz
+     * ```
+     */
     public const BASE58 = '123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz';
     public const OPEN_SITEMAPINDEX_TAG = '<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">';
     public const OPEN_URLSET_TAG = '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">';
@@ -331,18 +342,6 @@ PhpHelper::createRss([
         return $inputArray;
     }
 
-    /**
-     * 1234567890
-     * 123456789
-     *
-     * ABCDEFGHIJKLMNOPQRSTUVWXYZ
-     * ABCDEFGH JKLMN PQRSTUVWXYZ
-     *
-     * abcdefghijklmnopqrstuvwxyz
-     * abcdefghijk mnopqrstuvwxyz
-     *
-     * @noinspection SpellCheckingInspection
-     */
     public static function generateBase58Id(int $length = 8): string
     {
         $id = '';
