@@ -8,7 +8,7 @@
 
 ## Installation
 
-``` sh
+```sh
 composer req w3lifer/php-helper
 ```
 
@@ -16,7 +16,7 @@ composer req w3lifer/php-helper
 
 ### Methods
 
-``` php
+```php
 addChildrenToSimpleXMLElement(SimpleXMLElement $simpleXMLElement, array $children): void;
 
 addPrefixToArrayKeys(array $array, string $prefix, bool $recursively = true): array;
@@ -109,6 +109,6 @@ unzip(string $pathToArchive, string $extractTo);
 
 ## Tests
 
-``` sh
+```sh
 make tests # make t
 ```
