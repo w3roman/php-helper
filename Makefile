@@ -16,5 +16,6 @@ tests: build
 	docker compose run --rm php8.2-cli vendor/bin/phpunit --color=always tests/MainTest.php
 	docker compose run --rm php8.3-cli vendor/bin/phpunit --color=always tests/MainTest.php
 	docker compose run --rm php8.4-cli vendor/bin/phpunit --color=always tests/MainTest.php
+	docker compose run --rm php8.5-cli vendor/bin/phpunit --color=always tests/MainTest.php
 	docker network prune -f
 t: tests

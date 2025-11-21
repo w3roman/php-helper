@@ -32,6 +32,11 @@ services:
     container_name: php-helper-84
     <<: *defaults
 
+  php8.5-cli:
+    build: ./.docker/php/8.5/cli
+    container_name: php-helper-85
+    <<: *defaults
+
 networks:
   default:
     name: php-helper-default
