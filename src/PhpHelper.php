@@ -532,7 +532,7 @@ PhpHelper::createRss([
         $cookiesStringExploded = explode(';', $cookiesString);
         foreach ($cookiesStringExploded as $cookieString) {
             $cookieStringExploded = explode('=', $cookieString);
-            $cookies[$cookieStringExploded[0]] = $cookieStringExploded[1];
+            $cookies[trim($cookieStringExploded[0])] = trim($cookieStringExploded[1]);
         }
         ksort($cookies);
         return $cookies;
