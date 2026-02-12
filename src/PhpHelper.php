@@ -249,6 +249,8 @@ PhpHelper::createRss([
         foreach ($values as $value) {
             if (is_string($value)) {
                 $sqlValues .= $valueWrapper . str_replace($valueWrapper, '\\' . $valueWrapper, $value) . $valueWrapper;
+            } elseif (is_null($value)) {
+                $sqlValues .= 'null';
             } else {
                 $sqlValues .= $value;
             }
