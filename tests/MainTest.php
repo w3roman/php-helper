@@ -312,8 +312,14 @@ PhpHelper::createRss([
 
     public function testCreateSqlValuesString()
     {
-        $this->assertEquals('("one", "two", "three")', PhpHelper::createSqlValuesString(['one', 'two', 'three',]));
-        $this->assertEquals("('first', 'second', 'third')", PhpHelper::createSqlValuesString(['first', 'second', 'third'], "'"));
+        $this->assertEquals(
+            '("one", "two", "\"")',
+            PhpHelper::createSqlValuesString(['one', 'two', '"'])
+        );
+        $this->assertEquals(
+            "('first', 'second', '\'')",
+            PhpHelper::createSqlValuesString(['first', 'second', '\''], "'")
+        );
     }
 
     public function testCsvStringToArray()
