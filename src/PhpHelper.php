@@ -247,12 +247,12 @@ PhpHelper::createRss([
     {
         $sqlValues = '(';
         foreach ($values as $value) {
-            $sqlValues .=
-                $valueWrapper
-                . str_replace($valueWrapper, '\\' . $valueWrapper, $value)
-                . $valueWrapper
-                . ', '
-            ;
+            if (is_string($value)) {
+                $sqlValues .= $valueWrapper . str_replace($valueWrapper, '\\' . $valueWrapper, $value) . $valueWrapper;
+            } else {
+                $sqlValues .= $value;
+            }
+            $sqlValues .= ', ';
         }
         $sqlValues = rtrim($sqlValues, ', ');
         $sqlValues .= ')';

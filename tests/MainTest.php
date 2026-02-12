@@ -313,12 +313,12 @@ PhpHelper::createRss([
     public function testCreateSqlValuesString()
     {
         $this->assertEquals(
-            '("one", "two", "\"")',
-            PhpHelper::createSqlValuesString(['one', 'two', '"'])
+            '(1, "one", "\"")',
+            PhpHelper::createSqlValuesString([1, 'one', '"'])
         );
         $this->assertEquals(
-            "('first', 'second', '\'')",
-            PhpHelper::createSqlValuesString(['first', 'second', '\''], "'")
+            "(1, 'one', '\'')",
+            PhpHelper::createSqlValuesString([1, 'one', '\''], "'")
         );
     }
 
