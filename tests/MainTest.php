@@ -322,6 +322,27 @@ PhpHelper::createRss([
         );
     }
 
+    public function testCreateSqlValuesStringFormArrayOfArrays()
+    {
+        $this->assertEquals(
+            '(1, "one", "\"", null),
+(2, "two", "\"", null);
+',
+            PhpHelper::createSqlValuesStringFormArrayOfArrays(
+                [[1, 'one', '"', null], [2, 'two', '"', null]]
+            )
+        );
+        $this->assertEquals(
+            "(1, 'one', '\'', null),(2, 'two', '\'', null)",
+            PhpHelper::createSqlValuesStringFormArrayOfArrays(
+                [[1, 'one', '\'', null], [2, 'two', '\'', null]],
+                "'",
+                ',',
+                ''
+            )
+        );
+    }
+
     public function testCsvStringToArray()
     {
         $this->assertEquals([['']], PhpHelper::csvStringToArray(''));

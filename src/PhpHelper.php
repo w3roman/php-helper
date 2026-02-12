@@ -261,6 +261,20 @@ PhpHelper::createRss([
         return $sqlValues;
     }
 
+    public static function createSqlValuesStringFormArrayOfArrays(
+        array $values,
+        string $valueWrapper = '"',
+        string $rowDelimiter = ",\n",
+        string $append = ";\n"
+    ): string
+    {
+        $sqlValues = '';
+        foreach ($values as $value) {
+            $sqlValues .= self::createSqlValuesString($value, $valueWrapper) . $rowDelimiter;
+        }
+       return rtrim($sqlValues, $rowDelimiter) . $append;
+    }
+
     /**
      * Converts CSV string to array
      * Example of CSV string:

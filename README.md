@@ -39,6 +39,8 @@ createSitemapIndex(array $items, bool $addSitemapindexTag = true): string;
 
 createSqlValuesString(array $values, string $valueWrapper = '"'): string;
 
+createSqlValuesStringFormArrayOfArrays(array $values, string $valueWrapper = '"', string $rowDelimiter = ",\n", string $append = ";\n"): string
+
 csvStringToArray(string $csvString, bool $removeFirstLine = false): array;
 
 filterListOfArraysByKeyValuePairs(array $inputArray, array $searchParams): array;
